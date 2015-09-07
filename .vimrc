@@ -52,13 +52,8 @@ if !exists(":DiffOrig")
 endif
 
 
-
-
 " .mdファイルをmarkdownに紐付け
 au BufNewFile,BufRead *.md :set filetype=markdown
-
-" セミコロンでコマンドモードに以降
-nnoremap ; :
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"

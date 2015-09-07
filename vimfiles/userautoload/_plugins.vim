@@ -37,6 +37,17 @@ function! NeobundleEnable(dir)
     NeoBundle 'tomtom/tcomment_vim'
     " +-でZoom
     NeoBundle 'vim-scripts/zoom.vim'
+    " PlantUML用シンタックス
+    NeoBundle 'aklt/plantuml-syntax'
+    " end を自動補完
+    NeoBundle 'tpope/vim-endwise'
+    " スニペット
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    "強力な補完機能
+    " if_luaが有効ならneocompleteを使う
+    NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+   
 
     if has('win32unix') || has('win64unix') || has('unix')
       " 処理を非同期化
@@ -54,15 +65,7 @@ function! NeobundleEnable(dir)
     " Windows
     if has('win32') || has('win64')
     end
-    NeoBundle "aklt/plantuml-syntax"
 
-    " end を自動補完
-    NeoBundle 'tpope/vim-endwise'
-
-    "強力な補完機能
-    " if_luaが有効ならneocompleteを使う
-    NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-   
     call neobundle#end()
     " Required
     filetype plugin indent on
