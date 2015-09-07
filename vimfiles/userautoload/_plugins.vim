@@ -36,7 +36,9 @@ function! NeobundleEnable(dir)
     " コメントアウトを便利にする
     NeoBundle 'tomtom/tcomment_vim'
     " +-でZoom
-    NeoBundle 'vim-scripts/zoom.vim'
+    NeoBundle 'zoom.vim'
+    " テキスト整形
+    NeoBundle 'Align'
     " PlantUML用シンタックス
     NeoBundle 'aklt/plantuml-syntax'
     " end を自動補完
