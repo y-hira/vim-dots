@@ -23,6 +23,8 @@ function! NeobundleEnable(dir)
     " neobundle自体をneobundleで管理
     NeoBundleFetch 'Shougo/neobundle.vim'
 
+    " メモ用のファイルを作成
+    NeoBundle 'Shougo/junkfile.vim'
     " 閉じ括弧を自動的に入力
     NeoBundle 'Townk/vim-autoclose'
     " Unite ファイラ
@@ -52,6 +54,8 @@ function! NeobundleEnable(dir)
     NeoBundle 'Yggdroot/indentLine'
     " Twitter Client
     NeoBundle "basyura/TweetVim"
+    NeoBundle "basyura/twibill.vim"
+    NeoBundle 'mattn/webapi-vim'
     " = 等の入力を便利に
     NeoBundle "kana/vim-smartchr"
     " Simple note plugin 
@@ -65,7 +69,11 @@ function! NeobundleEnable(dir)
     NeoBundle 'kannokanno/previm'
     NeoBundle 'tyru/open-browser.vim'
     " gist 
-    NeoBundle 'lambdalisue/vim-gista'
+    NeoBundle 'lambdalisue/vim-gista', {
+    \ 'depends': [
+    \    'Shougo/unite.vim',
+    \    'tyru/open-browser.vim',
+    \]}
     "強力な補完機能
     " if_luaが有効ならneocompleteを使う
     NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
