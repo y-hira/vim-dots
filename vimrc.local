@@ -1,5 +1,8 @@
 " このファイルに必要事項を入力して .vimrc と同じディレクトリに設置する
 
+" Simplenote account
 let g:SimplenoteUsername = "username"
 let g:SimplenotePassword = "password"
 
+" github username
+let g:gista#github_user = 'GitHubのアカウント名'

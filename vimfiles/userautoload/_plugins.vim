@@ -60,6 +60,12 @@ function! NeobundleEnable(dir)
     NeoBundle 'tpope/vim-surround'
     " JsDoc
     NeoBundle 'heavenshell/vim-jsdoc'
+    " markdown 関連
+    NeoBundle 'plasticboy/vim-markdown'
+    NeoBundle 'kannokanno/previm'
+    NeoBundle 'tyru/open-browser.vim'
+    " gist 
+    NeoBundle 'lambdalisue/vim-gista'
     "強力な補完機能
     " if_luaが有効ならneocompleteを使う
     NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
