@@ -1,0 +1,5 @@
+" このファイルに必要事項を入力して .vimrc と同じディレクトリに設置する
+
+let g:SimplenoteUsername = "username"
+let g:SimplenotePassword = "password"
+

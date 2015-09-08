@@ -27,6 +27,8 @@ function! NeobundleEnable(dir)
     NeoBundle 'Townk/vim-autoclose'
     " Unite ファイラ
     NeoBundle 'Shougo/unite.vim'
+    " Unite の最近使ったファイル検索用プラグイン
+    NeoBundle "Shougo/neomru.vim"
     " Quick run 
     NeoBundle 'Thinca/vim-quickrun'
     " ファイルツリーを表示
@@ -38,7 +40,7 @@ function! NeobundleEnable(dir)
     " +-でZoom
     NeoBundle 'zoom.vim'
     " テキスト整形
-    NeoBundle 'Align'
+    NeoBundle 'junegunn/vim-easy-align'
     " PlantUML用シンタックス
     NeoBundle 'aklt/plantuml-syntax'
     " end を自動補完
@@ -46,23 +48,30 @@ function! NeobundleEnable(dir)
     " スニペット
     NeoBundle 'Shougo/neosnippet'
     NeoBundle 'Shougo/neosnippet-snippets'
+    " Indent line
+    NeoBundle 'Yggdroot/indentLine'
+    " Twitter Client
+    NeoBundle "basyura/TweetVim"
+    " = 等の入力を便利に
+    NeoBundle "kana/vim-smartchr"
+    " Simple note plugin 
+    NeoBundle "mrtazz/simplenote.vim"
+    " テキストを任意の文字で囲う
+    NeoBundle 'tpope/vim-surround'
+    " JsDoc
+    NeoBundle 'heavenshell/vim-jsdoc'
     "強力な補完機能
     " if_luaが有効ならneocompleteを使う
     NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-   
-
-    if has('win32unix') || has('win64unix') || has('unix')
-      " 処理を非同期化
-      NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make',
-      \     'unix' : 'gmake',
-      \    },
-      \ }
-    end
+    " 処理を非同期化
+    NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build' : {
+    \     'cygwin' : 'make -f make_cygwin.mak',
+    \     'mac' : 'make -f make_mac.mak',
+    \     'linux' : 'make',
+    \     'unix' : 'gmake',
+    \    },
+    \ }
 
     " Windows
     if has('win32') || has('win64')
