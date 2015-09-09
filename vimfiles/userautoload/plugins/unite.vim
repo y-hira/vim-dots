@@ -3,7 +3,7 @@ nnoremap    [unite]   <Nop>
 nmap    <Leader>f [unite]
 
 " srart with insert mode
-let g:unite_enable_start_insert=1
+" let g:unite_enable_start_insert=1
  
 " unite.vim keymap
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
