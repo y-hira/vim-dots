@@ -25,6 +25,10 @@ function! NeobundleEnable(dir)
 
     " メモ用のファイルを作成
     NeoBundle 'Shougo/junkfile.vim'
+    " ファイラ
+    NeoBundle 'Shougo/fimfiler.vim'
+    " shell
+    NeoBundle 'Shougo/vimshell.vim'
     " 閉じ括弧を自動的に入力
     NeoBundle 'Townk/vim-autoclose'
     " Unite ファイラ
