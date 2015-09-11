@@ -6,3 +6,6 @@ let g:SimplenotePassword = "password"
 
 " github username
 let g:gista#github_user = 'GitHubのアカウント名'
+
+" memo dir
+let g:memolist_path = "$HOME/memo"

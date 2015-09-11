@@ -26,7 +26,9 @@ function! NeobundleEnable(dir)
 
     " メモ用のファイルを作成
     NeoBundleLazy 'Shougo/junkfile.vim', {
-          \ 'commands' : ['JunkFileOpen'],
+          \   'autoload' : {
+          \     'commands' : ['JunkFileOpen'],
+          \    },
           \ }
 
     " ファイラ
@@ -36,7 +38,7 @@ function! NeobundleEnable(dir)
           \ {'name' : ['VimFiler', 'Edit', 'Write'],
           \  'complete' : 'customlist,vimfiler#complete'},
           \ 'Read', 'Source'],
-          \ 'mappings' : '<Plug>',
+          \ 'mappings' : '<Plug>(vimfiler)',
           \ 'explorer' : 1,
           \ }
 
@@ -65,12 +67,8 @@ function! NeobundleEnable(dir)
           \ }
 
     " Unite の最近使ったファイル検索用プラグイン
-    NeoBundleLazy 'Shougo/neomru.vim', {
+    NeoBundle 'Shougo/neomru.vim', {
           \ 'depends' : 'Shougo/unite.vim',
-          \   'autoload' : {
-          \     'commands' : [ 'Unite' ],
-          \     'mappings' : ['<Plug>(unite'],
-          \   },
           \ }
 
     " Quick run
@@ -225,6 +223,13 @@ function! NeobundleEnable(dir)
     NeoBundleLazy 'davidoc/taskpaper.vim', {
           \ 'autoload' : { 'filetypes' : 'taskpaper'  }
           \}
+
+    " memo管理用
+    NeoBundleLazy 'glidenote/memolist.vim', {
+          \   'autoload' : { 
+          \     'mappings' : ['<Plug>(memolist']
+          \   }
+          \ }
 
     " Windowsの場合
     if has('win32') || has('win64')
