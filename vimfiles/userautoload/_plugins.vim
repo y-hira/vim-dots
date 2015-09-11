@@ -18,7 +18,9 @@ function! NeobundleEnable(dir)
   if isdirectory(l:neobundleDir)
     " Required
     call neobundle#begin(expand(a:dir . 'bundle'))
-     
+    " キャッシュの読み込み
+    call neobundle#load_cache()
+
     " neobundle自体をneobundleで管理
     NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -27,15 +29,14 @@ function! NeobundleEnable(dir)
 
     " ファイラ
     NeoBundleLazy 'Shougo/vimfiler', {
-          \   'autoload' : { 'commands' : [ 'VimFilerBufferDir' ] },
-          \   'depends': [ 'Shougo/unite.vim' ],
+          \ 'depends' : 'Shougo/unite.vim',
+          \ 'commands' : [
+          \ {'name' : ['VimFiler', 'Edit', 'Write'],
+          \  'complete' : 'customlist,vimfiler#complete'},
+          \ 'Read', 'Source'],
+          \ 'mappings' : '<Plug>',
+          \ 'explorer' : 1,
           \ }
-    let s:bundle = neobundle#get("vimfiler")
-    function! s:bundle.hooks.on_source(bundle)
-      runtime! userautoload/plugins/vimfiler.vim
-      echo 'vimfiler.vim started.'
-    endfunction
-    unlet s:bundle
 
     " 入力を便利に
     NeoBundleLazy 'kana/vim-smartinput', {
@@ -55,25 +56,20 @@ function! NeobundleEnable(dir)
 
     " Unite
     NeoBundleLazy 'Shougo/unite.vim', {
-          \   'autoload' : { 'commands' : [ 'Unite' ] },
-          \   'mappings' : ['<Plug>(unite']
+          \  'autoload' : {
+          \    'commands' : [ 'Unite' ],
+          \    'mappings' : ['<Plug>(unite']
+          \ },
           \ }
-    let s:bundle = neobundle#get("unite.vim")
-    function! s:bundle.hooks.on_source(bundle)
-      runtime! userautoload/plugins/unite.vim
-      " 勝手に起動する？
-      " echo 'unite started'
-    endfunction
-    unlet s:bundle
 
     " Unite の最近使ったファイル検索用プラグイン
     NeoBundle 'Shougo/neomru.vim'
 
-    " Quick run 
+    " Quick run
     NeoBundle 'Thinca/vim-quickrun'
 
     " HTML 編集を効率化
-    NeoBundle 'mattn/emmet-vim' 
+    NeoBundle 'mattn/emmet-vim'
 
     " コメントアウトを便利にする
     NeoBundle 'tomtom/tcomment_vim'
@@ -86,7 +82,7 @@ function! NeobundleEnable(dir)
 
     " PlantUML用シンタックス
     NeoBundle 'aklt/plantuml-syntax'
-    
+
     " end を自動補完
     NeoBundle 'tpope/vim-endwise'
 
@@ -101,22 +97,22 @@ function! NeobundleEnable(dir)
     " = 等の入力を便利に
     NeoBundle "kana/vim-smartchr"
 
-    " Simple note plugin 
+    " Simple note plugin
     NeoBundle "mrtazz/simplenote.vim"
 
     " テキストを任意の文字で囲う
     NeoBundle 'tpope/vim-surround'
 
     " JsDoc
-    NeoBundle 'heavenshell/vim-jsdoc', {
+    NeoBundleLazy 'heavenshell/vim-jsdoc', {
           \ 'autoload' : { 'filetypes' : 'javascript'  }
           \}
 
     " markdown 関連
-    NeoBundle 'plasticboy/vim-markdown', {
+    NeoBundleLazy 'plasticboy/vim-markdown', {
           \ 'autoload' : { 'filetypes' : 'markdown'  }
           \}
-    NeoBundle 'kannokanno/previm', {
+    NeoBundleLazy 'kannokanno/previm', {
           \ 'autoload' : { 'filetypes' : 'markdown'  }
           \}
 
@@ -129,23 +125,20 @@ function! NeobundleEnable(dir)
           \   },
           \}
 
-    " gist 
-    NeoBundle 'lambdalisue/vim-gista', {
-    \ 'depends': [
-    \    'Shougo/unite.vim',
-    \    'tyru/open-browser.vim',
-    \]}
+    " gist
+    NeoBundleLazy 'lambdalisue/vim-gista', {
+          \ 'autoload' : {
+          \   'commands'  : ['Gista'],
+          \ },
+          \ 'depends': [
+          \   'Shougo/unite.vim',
+          \   'tyru/open-browser.vim',
+          \]}
 
     "強力な補完機能
     NeoBundleLazy 'Shougo/neocomplete', {
           \ 'insert': 1,
           \ }
-    let g:neocomplete#enable_at_startup = 1
-    let s:bundle = neobundle#get("neocomplete")
-    function! s:bundle.hooks.on_source(bundle)
-      runtime! userautoload/plugins/neocomplcache.vim
-    endfunction
-    unlet s:bundle
 
     " 処理を非同期化
     NeoBundle 'Shougo/vimproc.vim', {
@@ -165,21 +158,39 @@ function! NeobundleEnable(dir)
     NeoBundleLazy 'Shougo/neosnippet-snippets', {
           \ 'insert': 1,
           \ }
-    let s:bundle = neobundle#get("neosnippet")
-    function! s:bundle.hooks.on_source(bundle)
-      runtime! userautoload/plugins/neosnippet.vim
-      " echo 'neosnippet started'
-    endfunction
-    unlet s:bundle
 
-    " Windows
+    " ステータスラインをおしゃれに
+    NeoBundle 'itchyny/lightline.vim'
+
+    " undo履歴を視覚的に
+    NeoBundleLazy 'sjl/gundo.vim', {
+          \ 'commands': ['GundoToggle' ],
+          \ }
+
+    " Windowsの場合
     if has('win32') || has('win64')
+      "pass
     end
+
+    " カラースキーム
+    " NeoBundle 'altercation/vim-colors-solarized'
+    " NeoBundle 'sjl/badwolf'
+    NeoBundle 'w0ng/vim-hybrid'
+
+    " gitの差分管理
+    NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'airblade/vim-gitgutter'
+
+    " white-spaceの管理
+    NeoBundle 'bronson/vim-trailing-whitespace'
 
     call neobundle#end()
     " Required
     filetype plugin indent on
-     
+
+    " キャッシュの書込み
+    NeoBundleSaveCache
+
     " 未インストールのプラグインをインストールするかどうかを尋ねてくれるようにする設定
     NeoBundleCheck
 
@@ -198,8 +209,7 @@ if has('win32unix') || has('win64unix') || has('unix')
 
   if isdirectory(expand('~/.vim/bundle/'))
     call NeobundleEnable(expand('~/.vim/'))
-    " neobundlelazyでhookする
-    " runtime! userautoload/plugins/*.vim
+    runtime! userautoload/plugins/*.vim
   endif
 
 endif
@@ -209,10 +219,7 @@ if has('win32') || has('win64')
 
   if isdirectory(expand('c:/vim/vimfiles/bundle/'))
     call NeobundleEnable(expand('c:/vim/vimfiles/'))
-    " neobundlelazyでhookする
-    " runtime! userautoload/plugins/*.vim
+    runtime! userautoload/plugins/*.vim
   endif
 
 endif
-
-

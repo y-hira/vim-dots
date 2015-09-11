@@ -10,7 +10,7 @@ if has('win32') || has('win64')
 	"set shellredir=>%s\ 2>&1
 	"set grepprg=grep
 
-  set backup 
+  set backup
   set backupdir=%temp%
   set directory=%temp%
 

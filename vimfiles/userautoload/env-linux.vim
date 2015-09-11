@@ -1,6 +1,6 @@
 if has('win32unix') || has('win64unix') || has('unix')
 
-  set backup 
+  set backup
   set backupdir=/tmp
   set directory=/tmp
 
