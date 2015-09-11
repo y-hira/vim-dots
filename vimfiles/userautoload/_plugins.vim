@@ -25,7 +25,9 @@ function! NeobundleEnable(dir)
     NeoBundleFetch 'Shougo/neobundle.vim'
 
     " メモ用のファイルを作成
-    NeoBundle 'Shougo/junkfile.vim'
+    NeoBundleLazy 'Shougo/junkfile.vim', {
+          \ 'commands' : ['JunkFileOpen'],
+          \ }
 
     " ファイラ
     NeoBundleLazy 'Shougo/vimfiler', {
@@ -56,35 +58,67 @@ function! NeobundleEnable(dir)
 
     " Unite
     NeoBundleLazy 'Shougo/unite.vim', {
-          \  'autoload' : {
+          \ 'autoload' : {
           \    'commands' : [ 'Unite' ],
           \    'mappings' : ['<Plug>(unite']
           \ },
           \ }
 
     " Unite の最近使ったファイル検索用プラグイン
-    NeoBundle 'Shougo/neomru.vim'
+    NeoBundleLazy 'Shougo/neomru.vim', {
+          \ 'depends' : 'Shougo/unite.vim',
+          \   'autoload' : {
+          \     'commands' : [ 'Unite' ],
+          \     'mappings' : ['<Plug>(unite'],
+          \   },
+          \ }
 
     " Quick run
-    NeoBundle 'Thinca/vim-quickrun'
+    NeoBundleLazy 'Thinca/vim-quickrun', {
+          \   'autoload' : {
+          \     'mappings' : [ '<Plug>(quickrun)' ],
+          \   }
+          \ }
 
     " HTML 編集を効率化
-    NeoBundle 'mattn/emmet-vim'
+    NeoBundleLazy 'mattn/emmet-vim', {
+          \   'autoload' : {
+          \     'mapping' : [ '<Plug>(emmet-' ],
+          \   }
+          \ }
 
     " コメントアウトを便利にする
-    NeoBundle 'tomtom/tcomment_vim'
+    NeoBundleLazy 'tomtom/tcomment_vim', {
+          \   'autoload' : {
+          \     'mapping' : [ '<Plug>(TComment' ],
+          \   }
+          \ }
 
     " +-でZoom
-    NeoBundle 'zoom.vim'
+    NeoBundleLazy 'zoom.vim', {
+          \   'autoload' : {
+          \     'commands' : [ 'ZoomIn', 'ZoomOut' ],
+          \   }
+          \ }
 
     " テキスト整形
-    NeoBundle 'junegunn/vim-easy-align'
+    NeoBundleLazy 'junegunn/vim-easy-align', {
+          \   'autoload' : {
+          \     'commands' : [ 'EasyAlign' ],
+          \   }
+          \ }
 
     " PlantUML用シンタックス
-    NeoBundle 'aklt/plantuml-syntax'
+    NeoBundleLazy 'aklt/plantuml-syntax', {
+          \   'autoload' : {
+          \     'filetype' : [ 'plantuml' ],
+          \   }
+          \ }
 
     " end を自動補完
-    NeoBundle 'tpope/vim-endwise'
+    NeoBundleLazy 'tpope/vim-endwise', {
+          \ 'insert': 1,
+          \ }
 
     " Indent line
     NeoBundle 'Yggdroot/indentLine'
@@ -95,13 +129,21 @@ function! NeobundleEnable(dir)
     NeoBundle 'mattn/webapi-vim'
 
     " = 等の入力を便利に
-    NeoBundle "kana/vim-smartchr"
+    NeoBundleLazy "kana/vim-smartchr", {
+          \ 'insert': 1,
+          \ }
 
     " Simple note plugin
-    NeoBundle "mrtazz/simplenote.vim"
+    NeoBundleLazy "mrtazz/simplenote.vim", {
+          \   'autoload' : {
+          \     'commands' : [ 'Simplenote' ],
+          \   }
+          \ }
 
     " テキストを任意の文字で囲う
-    NeoBundle 'tpope/vim-surround'
+    NeoBundleLazy 'tpope/vim-surround', {
+          \ 'insert': 1,
+          \ }
 
     " JsDoc
     NeoBundleLazy 'heavenshell/vim-jsdoc', {
@@ -167,11 +209,6 @@ function! NeobundleEnable(dir)
           \ 'commands': ['GundoToggle' ],
           \ }
 
-    " Windowsの場合
-    if has('win32') || has('win64')
-      "pass
-    end
-
     " カラースキーム
     " NeoBundle 'altercation/vim-colors-solarized'
     " NeoBundle 'sjl/badwolf'
@@ -183,6 +220,16 @@ function! NeobundleEnable(dir)
 
     " white-spaceの管理
     NeoBundle 'bronson/vim-trailing-whitespace'
+
+    " タスク管理
+    NeoBundleLazy 'davidoc/taskpaper.vim', {
+          \ 'autoload' : { 'filetypes' : 'taskpaper'  }
+          \}
+
+    " Windowsの場合
+    if has('win32') || has('win64')
+      "pass
+    end
 
     call neobundle#end()
     " Required
