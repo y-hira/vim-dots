@@ -24,3 +24,6 @@ set laststatus=2
 
 " .mdファイルをmarkdownに紐付け
 au BufNewFile,BufRead *.md :set filetype=markdown
+
+" タブの可視化
+set listchars=tab:>\

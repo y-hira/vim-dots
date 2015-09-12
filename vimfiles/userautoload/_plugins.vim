@@ -86,11 +86,7 @@ function! NeobundleEnable(dir)
           \ }
 
     " コメントアウトを便利にする
-    NeoBundleLazy 'tomtom/tcomment_vim', {
-          \   'autoload' : {
-          \     'mapping' : [ '<Plug>(TComment' ],
-          \   }
-          \ }
+    NeoBundle 'tomtom/tcomment_vim'
 
     " +-でZoom
     NeoBundleLazy 'zoom.vim', {
