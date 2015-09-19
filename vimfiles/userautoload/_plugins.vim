@@ -71,6 +71,11 @@ function! NeobundleEnable(dir)
           \ 'depends' : 'Shougo/unite.vim',
           \ }
 
+    " outline 
+    NeoBundle 'Shougo/unite-outline', {
+          \ 'depends' : 'Shougo/unite.vim',
+          \ }
+
     " Quick run
     NeoBundleLazy 'Thinca/vim-quickrun', {
           \   'autoload' : {
@@ -79,11 +84,13 @@ function! NeobundleEnable(dir)
           \ }
 
     " HTML 編集を効率化
-    NeoBundleLazy 'mattn/emmet-vim', {
-          \   'autoload' : {
-          \     'mapping' : [ '<Plug>(emmet-' ],
-          \   }
-          \ }
+    " Lazyがうまくいかない？
+    "NeoBundleLazy 'mattn/emmet-vim', {
+    "      \   'autoload' : {
+    "      \     'filetype' : [ 'html', 'javascript' ],
+    "      \   }
+    "      \ }
+    NeoBundle 'mattn/emmet-vim'
 
     " コメントアウトを便利にする
     NeoBundle 'tomtom/tcomment_vim'
@@ -145,7 +152,7 @@ function! NeobundleEnable(dir)
           \}
 
     " markdown 関連
-    NeoBundleLazy 'plasticboy/vim-markdown', {
+    NeoBundleLazy 'gabrielelana/vim-markdown', {
           \ 'autoload' : { 'filetypes' : 'markdown'  }
           \}
     NeoBundleLazy 'kannokanno/previm', {
@@ -179,7 +186,7 @@ function! NeobundleEnable(dir)
     " 処理を非同期化
     NeoBundle 'Shougo/vimproc.vim', {
     \ 'build' : {
-    \     'windows' : 'tools\\update-dll-mingw',
+    \     'windows' : 'make -f make_mingw32.mak',
     \     'cygwin' : 'make -f make_cygwin.mak',
     \     'mac' : 'make -f make_mac.mak',
     \     'linux' : 'make',
@@ -222,10 +229,13 @@ function! NeobundleEnable(dir)
 
     " memo管理用
     NeoBundleLazy 'glidenote/memolist.vim', {
-          \   'autoload' : { 
+          \   'autoload' : {
           \     'mappings' : ['<Plug>(memolist']
           \   }
           \ }
+
+    " todo
+    NeoBundle 'freitass/todo.txt-vim'
 
     " Windowsの場合
     if has('win32') || has('win64')
