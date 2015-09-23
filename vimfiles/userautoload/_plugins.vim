@@ -237,6 +237,9 @@ function! NeobundleEnable(dir)
     " todo
     NeoBundle 'freitass/todo.txt-vim'
 
+    " 日本語ヘルプ
+    NeoBundle 'vim-jp/vimdoc-ja'
+
     " Windowsの場合
     if has('win32') || has('win64')
       "pass
