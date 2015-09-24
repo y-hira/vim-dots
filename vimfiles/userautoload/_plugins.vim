@@ -253,7 +253,7 @@ function! NeobundleEnable(dir)
     NeoBundleSaveCache
 
     " 未インストールのプラグインをインストールするかどうかを尋ねてくれるようにする設定
-    NeoBundleCheck
+    " NeoBundleCheck
 
   endif
 
