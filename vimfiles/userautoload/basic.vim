@@ -27,3 +27,7 @@ au BufNewFile,BufRead *.md :set filetype=markdown
 
 " タブの可視化
 set listchars=tab:>\
+
+" grep結果をQuickFixに表示
+" http://qiita.com/yuku_t/items/0c1aff03949cb1b8fe6b
+autocmd QuickFixCmdPost *grep* cwindow
