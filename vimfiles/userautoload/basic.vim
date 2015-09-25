@@ -19,6 +19,9 @@ if (exists('+colorcolumn'))
     highlight ColorColumn ctermbg=9
 endif
 
+" 開いているファイルのディレクトリに自動的に移動
+set autochdir
+
 " ステータスライン for lightline
 set laststatus=2
 
