@@ -20,7 +20,7 @@ if (exists('+colorcolumn'))
 endif
 
 " 開いているファイルのディレクトリに自動的に移動
-set autochdir
+" set autochdir
 
 " ステータスライン for lightline
 set laststatus=2

@@ -71,7 +71,7 @@ function! NeobundleEnable(dir)
           \ 'depends' : 'Shougo/unite.vim',
           \ }
 
-    " outline 
+    " outline
     NeoBundle 'Shougo/unite-outline', {
           \ 'depends' : 'Shougo/unite.vim',
           \ }
@@ -216,8 +216,12 @@ function! NeobundleEnable(dir)
     NeoBundle 'w0ng/vim-hybrid'
 
     " gitの差分管理
-    NeoBundle 'tpope/vim-fugitive'
-    NeoBundle 'airblade/vim-gitgutter'
+    NeoBundleLazy 'tpope/vim-fugitive', {
+          \ 'commands': ['w'],
+          \ }
+    NeoBundleLazy 'airblade/vim-gitgutter', {
+          \ 'commands': ['w'],
+          \ }
 
     " white-spaceの管理
     NeoBundle 'bronson/vim-trailing-whitespace'
