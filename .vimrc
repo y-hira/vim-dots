@@ -244,10 +244,11 @@ function! NeobundleEnable(dir)
     " メモ用のファイルを作成 {{{
     "------------------------------
 
-    NeoBundleLazy 'Shougo/junkfile.vim', {
+    " memo管理用
+    NeoBundleLazy 'glidenote/memolist.vim', {
           \   'autoload' : {
-          \     'commands' : ['JunkFileOpen'],
-          \    },
+          \     'mappings' : ['<Plug>(memolist']
+          \   }
           \ }
 
     nnoremap    [memolist]   <Nop>
@@ -875,12 +876,8 @@ function! NeobundleEnable(dir)
           \ 'autoload' : { 'filetypes' : 'taskpaper'  }
           \}
 
-    " memo管理用
-    NeoBundleLazy 'glidenote/memolist.vim', {
-          \   'autoload' : {
-          \     'mappings' : ['<Plug>(memolist']
-          \   }
-          \ }
+    " junkfile
+    NeoBundle 'Shougo/junkfile.vim'
 
     " todo
     NeoBundle 'freitass/todo.txt-vim'
