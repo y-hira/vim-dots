@@ -163,7 +163,7 @@ if has('win32') || has('win64')
   set backupdir=%temp%
   set directory=%temp%
    
-  set encoding=cp932
+  set encoding=utf-8
 
   if filereadable(expand('c:/vim/vimrc.local'))
     source c:/vim/vimrc.local
