@@ -9,6 +9,7 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 "
+scriptencoding utf-8
 
 " vi 設定と互換性無しの宣言 (先頭行に記載)
 set nocompatible
