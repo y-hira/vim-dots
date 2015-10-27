@@ -73,8 +73,8 @@ set expandtab
 
 " 特定の言語はタブ幅を変える
 augroup vimrc
-  autocmd! FileType python setlocal shiftwidth=4 tabstop=4
-  autocmd! FileType markdown setlocal shiftwidth=4 tabstop=4
+  " autocmd! FileType python setlocal shiftwidth=4 tabstop=4
+  " autocmd! FileType markdown setlocal shiftwidth=4 tabstop=4
 augroup END
 
 " 行80文字のラインを引く
@@ -285,7 +285,7 @@ function! NeobundleEnable(dir)
     "------------------------------
 
     NeoBundleLazy 'Shougo/vimfiler', {
-          \ 'depends' : 'Shougo/unite.vim',
+          \ 'depends' : 'Shougo/unite',
           \ 'commands' : [
           \ {'name' : ['VimFiler', 'Edit', 'Write'],
           \  'complete' : 'customlist,vimfiler#complete'},
@@ -338,7 +338,7 @@ function! NeobundleEnable(dir)
     " Unite {{{
     "------------------------------
 
-    NeoBundleLazy 'Shougo/unite.vim', {
+    NeoBundleLazy 'Shougo/unite', {
           \ 'autoload' : {
           \    'commands' : [ 'Unite' ],
           \    'mappings' : ['<Plug>(unite']
@@ -347,12 +347,12 @@ function! NeobundleEnable(dir)
 
     " 最近使ったファイル検索用プラグイン
     NeoBundle 'Shougo/neomru.vim', {
-          \ 'depends' : 'Shougo/unite.vim',
+          \ 'depends' : 'Shougo/unite',
           \ }
 
     " outline
     NeoBundle 'Shougo/unite-outline', {
-          \ 'depends' : 'Shougo/unite.vim',
+          \ 'depends' : 'Shougo/unite',
           \ }
 
     " The prefix key.
@@ -671,7 +671,7 @@ function! NeobundleEnable(dir)
     "------------------------------
 
     " 処理を非同期化
-    NeoBundle 'Shougo/vimproc.vim', {
+    NeoBundle 'Shougo/vimproc', {
     \ 'build' : {
     \     'windows' : 'make -f make_mingw32.mak',
     \     'cygwin' : 'make -f make_cygwin.mak',
