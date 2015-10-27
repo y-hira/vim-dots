@@ -74,7 +74,7 @@ set expandtab
 " 特定の言語はタブ幅を変える
 augroup vimrc
   " autocmd! FileType python setlocal shiftwidth=4 tabstop=4
-  " autocmd! FileType markdown setlocal shiftwidth=4 tabstop=4
+  autocmd! FileType markdown setlocal shiftwidth=4 tabstop=4
 augroup END
 
 " 行80文字のラインを引く
