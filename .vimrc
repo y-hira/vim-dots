@@ -99,11 +99,6 @@ set listchars=tab:>\
 " http://qiita.com/yuku_t/items/0c1aff03949cb1b8fe6b
 autocmd QuickFixCmdPost *grep* cwindow
 
-" クリップボードの共有化
-" 無名レジスタに入るデータを、*レジスタにも入れる。
-" http://nanasi.jp/articles/howto/editing/clipboard.html#yank
-set clipboard+=unnamed
-
 " }}}
 "========================================
 
@@ -128,7 +123,7 @@ endif
 
 
 "========================================
-" for linux or cygwin{{{
+" for linux {{{
 "========================================
 
 if has('win32unix') || has('win64unix') || has('unix')
@@ -138,19 +133,6 @@ if has('win32unix') || has('win64unix') || has('unix')
   set directory=/tmp
 
   set encoding=utf-8
-
-  " http://qiita.com/mwmsnn/items/0b40662a22162907efae
-	" 挿入モードに入る時，前回の挿入モードにおける IME の状態を復元する．
-	" set t_SI+=[<a
-
-	" 挿入モードを出る時，現在の IME の状態を保存し，IME をオフにする．
-	" set t_EI+=[<s[<0t
-
-	" Vim 終了時，IME を無効にし，無効にした状態を保存する．
-	" set t_te+=[<0t[<s
-
-	" ESC キーを押してから挿入モードを出るまでの時間を短くする
-	" set timeoutlen=100
 
   if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
@@ -181,7 +163,7 @@ if has('win32') || has('win64')
   set backup
   set backupdir=%temp%
   set directory=%temp%
-
+   
   set encoding=utf-8
 
   if filereadable(expand('c:/vim/vimrc.local'))
@@ -952,4 +934,4 @@ endif
 " }}}
 "========================================
 
-" /* vim:set foldmethod=marker: */
+" /* vim:set foldmethod=marker: */ 
