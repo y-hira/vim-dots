@@ -60,9 +60,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " basic {{{
 "========================================
 
-" -----------------
 " テキスト表示・タブ関連
-
 set number
 set incsearch
 set autoindent
@@ -98,6 +96,9 @@ set listchars=tab:>\
 " grep結果をQuickFixに表示
 " http://qiita.com/yuku_t/items/0c1aff03949cb1b8fe6b
 autocmd QuickFixCmdPost *grep* cwindow
+
+" 無名レジスタに入るデータを、*レジスタにも入れる。
+:set clipboard+=unnamed
 
 " }}}
 "========================================
