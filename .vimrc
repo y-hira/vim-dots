@@ -886,6 +886,8 @@ function! NeobundleEnable(dir)
 
     " junkfile
     NeoBundle 'Shougo/junkfile.vim'
+    " unite.vim keymap
+    nnoremap [unite]j  :<C-u>Unite junkfile/new<CR>
 
     " todo
     NeoBundle 'freitass/todo.txt-vim'
@@ -920,25 +922,19 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 
 if has('win32unix') || has('win64unix') || has('unix')
-
   if isdirectory(expand('~/.vim/bundle/'))
     call NeobundleEnable(expand('~/.vim/'))
-    runtime! userautoload/plugins/*.vim
   endif
-
 endif
 
 
 if has('win32') || has('win64')
-
   if isdirectory(expand('c:/vim/vimfiles/bundle/'))
     call NeobundleEnable(expand('c:/vim/vimfiles/'))
-    runtime! userautoload/plugins/*.vim
   endif
-
 endif
 
 " }}}
 "========================================
 
-" /* vim:set foldmethod=marker: */ 
+" /* vim:set foldmethod=marker: */
