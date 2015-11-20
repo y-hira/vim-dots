@@ -163,8 +163,8 @@ if has('win32') || has('win64')
   set backup
   set backupdir=%temp%
   set directory=%temp%
-   
   set encoding=utf-8
+  let $HOME="%userprofile%\\.vim"
 
   if filereadable(expand('c:/vim/vimrc.local'))
     source c:/vim/vimrc.local
@@ -864,7 +864,7 @@ function! NeobundleEnable(dir)
           \ }
 
     "------------------------------
-    " white-spaceの管理
+    " white-spaceの管理 {{{
     "------------------------------
 
     NeoBundle 'bronson/vim-trailing-whitespace'
