@@ -67,6 +67,7 @@ colorscheme hybrid
 if has('win32')
   " Windows用
   set guifont=Migu_1M:h9:cSHIFTJIS
+  set guifont=Migu_2M:h9:cSHIFTJIS
   "set guifont=MS_Mincho:h12:cSHIFTJIS
   " 行間隔の設定
   set linespace=1
