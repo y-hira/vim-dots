@@ -90,8 +90,9 @@ set laststatus=2
 " .mdファイルをmarkdownに紐付け
 au BufNewFile,BufRead *.md :set filetype=markdown
 
-" タブの可視化
-set listchars=tab:>\
+" 特殊文字の可視化
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 
 " grep結果をQuickFixに表示
 " http://qiita.com/yuku_t/items/0c1aff03949cb1b8fe6b
